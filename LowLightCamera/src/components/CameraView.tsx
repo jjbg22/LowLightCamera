@@ -22,6 +22,9 @@ const CameraView = ({
   
   const [enhancedImage, setEnhancedImage] = useState<string | null>(null);
   const [processingTime, setProcessingTime] = useState<number>(0);
+
+  const exposureBias = 0.3;  
+  const zoomLevel = 1.3;       
   
   const format = useCameraFormat(device, [
     {fps: 30},
@@ -55,8 +58,6 @@ const CameraView = ({
       
       try {
         const photo = await camera.current?.takePhoto({
-          qualityPrioritization: 'speed',
-          skipMetadata: true,
           flash: 'off',
         });
         
@@ -118,6 +119,7 @@ const CameraView = ({
           pixelFormat="yuv"
           photo={true}
           enableBufferCompression={true}
+          exposure={0}
         />
       )}
 
@@ -133,6 +135,7 @@ const CameraView = ({
             pixelFormat="yuv"
             photo={true}
             enableBufferCompression={true}
+            exposure={0}
           />
           
           {/* Enhanced 이미지만 보여줌 */}
@@ -141,7 +144,6 @@ const CameraView = ({
               source={{uri: enhancedImage}}
               style={StyleSheet.absoluteFill}
               resizeMode="cover"
-              pointerEvents="none"
             />
           )}
         </>
