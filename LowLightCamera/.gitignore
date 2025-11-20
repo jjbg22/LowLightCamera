@@ -73,3 +73,24 @@ yarn-error.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# VSCode / IDE 설정
+.vscode/
+*.code-workspace
+
+# 환경 변수 / 비밀 정보
+.env
+.env.local
+.env.*.local
+
+# React Native / Metro cache
+.expo/
+.expo-shared/
+dist/
+.tmp/
+*.tmp
+*.temp
+
+# Android build
+android/app/build/
+android/build/
